@@ -1,22 +1,28 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StudentController; // Aap ka naya Student Controller
+use App\Http\Controllers\StudentController; 
 use Illuminate\Support\Facades\Route;
 
 // ==========================================
-// AAP KI ASSIGNMENT 1 KE ROUTES
+// ASSIGNMENT 1 & 2: STUDENT MANAGEMENT
 // ==========================================
 
-// 1. Homepage ka route (Purane 'welcome' view ko replace kar diya)
+// 1. Homepage
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// 2. All Students List ka route
+// 2. All Students List
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
 
-// 3. Dynamic Student Profile
+// 3. Register Student Form (ASSIGNMENT 2 - Isay {id} se upar rakhna hai)
+Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+
+// 4. Save Student Data (ASSIGNMENT 2)
+Route::post('/students', [StudentController::class, 'store'])->name('students.store');
+
+// 5. Dynamic Student Profile (ASSIGNMENT 1)
 Route::get('/students/{id}', [StudentController::class, 'show'])->name('students.show');
 
 
